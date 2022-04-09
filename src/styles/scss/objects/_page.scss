@@ -1,0 +1,75 @@
+/*  page style
+-------------------------------------------------------------------------------------------- */
+.page {
+    position: relative;
+    max-width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: $page-background;
+}
+.page__header {
+    display: flex;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    transition: padding 0.3s;
+    //    background-color: rgba(174, 0, 255, 0.205);
+
+    @include md {
+        padding: 16px 40px;
+    }
+
+    @include lg {
+        padding: 20px 60px;
+    }
+
+    @include xl {
+        padding: 30px 120px;
+    }
+}
+.page__headerContent {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+.page__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+    box-sizing: border-box;
+    padding: 30px 20px;
+    transition: padding 0.3s;
+    //    background-color: rgba(21, 255, 0, 0.205);
+
+    @include md {
+        padding: 60px 40px;
+    }
+
+    @include lg {
+        padding: 100px 60px;
+    }
+
+    @include xl {
+        padding: 140px 120px;
+    }
+}
+.content {
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.page__footer {
+    background-color: $hr-primary-dark;
+    color: #fff;
+}
+.page__footer a {
+    color: #fff;
+}

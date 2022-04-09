@@ -1,0 +1,21 @@
+.navFooter {
+    display: flex;
+    margin: auto;
+}
+.navFooter__list {
+	display: flex;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+.navFooter__item {
+	display: flex;
+    margin: 0;
+    padding: 0;
+}
+.navFooter__text {
+	display: flex;
+    margin: 0;
+    padding: 10px 5px;
+    color: #fff;
+}

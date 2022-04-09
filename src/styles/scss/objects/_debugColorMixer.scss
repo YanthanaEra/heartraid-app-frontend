@@ -1,0 +1,106 @@
+@import '../global/global';
+
+.debugColorMixer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+.debugColorMixer__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.651);
+    min-height: 60px;
+}
+.debugColorMixer__item--y1 {
+    background-color: $yellow-light;
+}
+.debugColorMixer__item--y2 {
+    background-color: $yellow;
+}
+.debugColorMixer__item--y3 {
+    background-color: $yellow-dark;
+}
+.debugColorMixer__item--o1 {
+    background-color: $orange-light;
+}
+.debugColorMixer__item--o2 {
+    background-color: $orange;
+}
+.debugColorMixer__item--o3 {
+    background-color: $orange-dark;
+}
+.debugColorMixer__item--r1 {
+    background-color: $red-light;
+}
+.debugColorMixer__item--r2 {
+    background-color: $red;
+}
+.debugColorMixer__item--r3 {
+    background-color: $red-dark;
+}
+.debugColorMixer__item--lime1 {
+    background-color: $lime-light;
+}
+.debugColorMixer__item--lime2 {
+    background-color: $lime;
+}
+.debugColorMixer__item--lime3 {
+    background-color: $lime-dark;
+}
+.debugColorMixer__item--pu1 {
+    background-color: $purple-light;
+}
+.debugColorMixer__item--pu2 {
+    background-color: $purple;
+}
+.debugColorMixer__item--pu3 {
+    background-color: $purple-dark;
+}
+.debugColorMixer__item--pink1 {
+    background-color: $pink-light;
+}
+.debugColorMixer__item--pink2 {
+    background-color: $pink;
+}
+.debugColorMixer__item--pink3 {
+    background-color: $pink-dark;
+}
+.debugColorMixer__item--lips1 {
+    background-color: $lips-light;
+}
+.debugColorMixer__item--lips2 {
+    background-color: $lips;
+}
+.debugColorMixer__item--lips3 {
+    background-color: $lips-dark;
+}
+.debugColorMixer__item--green1 {
+    background-color: $green-light;
+}
+.debugColorMixer__item--green2 {
+    background-color: $green;
+}
+.debugColorMixer__item--green3 {
+    background-color: $green-dark;
+}
+.debugColorMixer__item--blue1 {
+    background-color: $blue-light;
+}
+.debugColorMixer__item--blue2 {
+    background-color: $blue;
+}
+.debugColorMixer__item--blue3 {
+    background-color: $blue-dark;
+}
+.debugColorMixer__item--turquoise1 {
+    background-color: $turquoise-light;
+}
+.debugColorMixer__item--turquoise2 {
+    background-color: $turquoise;
+}
+.debugColorMixer__item--turquoise3 {
+    background-color: $turquoise-dark;
+}

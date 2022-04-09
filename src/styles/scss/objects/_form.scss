@@ -1,0 +1,23 @@
+@import 'form/button';
+@import 'form/checkbox';
+@import 'form/inputRadio';
+@import 'form/inputText';
+@import 'form/textarea';
+
+form {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px 10px;
+}
+.form__row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px 10px;
+}
+.form__item {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}

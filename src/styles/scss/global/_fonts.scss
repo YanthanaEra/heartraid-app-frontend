@@ -1,0 +1,35 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 4678953, 2022-04-08T18:13:25-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: NEONLoveRegular by Qaratype
+ * URL: https://www.myfonts.com/fonts/qaratype/neon-love/regular/
+ * Copyright: Copyright 2021 © Qaratype | All Rights Reserved
+ *
+ *
+ *
+ * © 2022 MyFonts Inc
+*/
+
+@font-face {
+    font-family: "NEONLove";
+    src:
+        url('/src/styles/fonts/NEONLove/font.woff2') format('woff2'),
+        url('/src/styles/fonts/NEONLove/font.woff') format('woff');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+// font-family: 'Rubik Glitch', cursive;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+// font-family: 'Comfortaa', cursive;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+// font-family: 'Quicksand', sans-serif;
