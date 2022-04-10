@@ -6,7 +6,7 @@
     "tabWidth": 4,
     "indent": [1, 4],
     "bracketSpacing": true,
-    "jsxBracketSameLine": false,
+    "jsxBracketSameLine": true,
     "endOfLine": "crlf",
     "singleAttributePerLine": true
 }

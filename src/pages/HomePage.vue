@@ -1,7 +1,10 @@
 <template>
     <section class="page__content page__content--home">
         <div class="content">
-            <!-- HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /-->
+            <img
+                alt="Vue logo"
+                src="../assets/logo.svg"
+            />
             <h1 v-html="$t('homepage.headline')"></h1>
             <div class="grid grid--home">
                 <div class="grid__itemLogin">
@@ -17,7 +20,6 @@
 
 <script>
 import { defineComponent } from 'vue';
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 import FormLogin from '@/components/forms/login.vue';
 import FormRegister from '@/components/forms/register.vue';
 

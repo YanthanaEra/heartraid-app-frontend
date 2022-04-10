@@ -1,4 +1,32 @@
 {
-    "appName": "Heartraid DE",
-    "dog": "Hund"
+    "message": "Hallo DE i18n !!",
+    "homepage": {
+        "headline": "Willkommen bei <span class=\"font-neon\">HEARTRAID</span>"
+    },
+    "form": {
+        "username": "Username",
+        "firstname": "Vorname",
+        "lastname": "Nachname",
+        "email": "E-Mail",
+        "password": "Passwort",
+        "passwordRepeat": "Passwort wiederholen",
+        "gender": "Geschlecht",
+        "diverse": "Diverse",
+        "female": "Frau",
+        "male": "Mann",
+        "birthday": "Geburtstag",
+        "birthMonth": "Geburtsmonat",
+        "birthYear": "Geburtsjahr",
+        "register": "Registieren",
+        "registerNow": "Jetzt Registieren",
+        "login": "Login",
+        "loginNow": "Jetzt einloggen",
+        "day": "Tag"
+    },
+    "month": {
+        "month": "Monat",
+        "january": "Januar",
+        "february": "Februar",
+        "march": "März"
+    }
 }

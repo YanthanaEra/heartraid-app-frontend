@@ -1,4 +1,32 @@
 {
-    "appName": "Heartraid EN",
-    "dog": "Dog"
+    "message": "Hello EN i18n !!",
+    "homepage": {
+        "headline": "Welcome to heart raid"
+    },
+    "form": {
+        "username": "Username",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "email": "E-mail",
+        "password": "Password",
+        "passwordRepeat": "Repeat password",
+        "gender": "Gender",
+        "diverse": "Diverse",
+        "female": "Female",
+        "male": "Male",
+        "birthday": "Birthday",
+        "birthMonth": "Birth month",
+        "birthYear": "Birth year",
+        "register": "Register",
+        "registerNow": "Register now",
+        "login": "Login",
+        "loginNow": "Login now",
+        "day": "Day"
+    },
+    "month": {
+        "month": "Month",
+        "january": "January",
+        "february": "February",
+        "march": "March"
+    }
 }
