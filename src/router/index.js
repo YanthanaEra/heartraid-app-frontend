@@ -16,19 +16,28 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '@/pages/ProfilePage.vue'),
     },
     {
+        path: '/dashboard',
+        name: 'DashboardPage',
+        component: () => import('@/pages/DashboardPage.vue'),
+        meta: {
+            requireAuth: true,
+        },
+    },
+    {
         path: '/login',
         name: 'LoginPage',
         component: () => import('@/pages/LoginPage.vue'),
+        meta: {
+            authPage: true,
+        },
     },
     {
         path: '/register',
         name: 'RegisterPage',
         component: () => import('@/pages/RegisterPage.vue'),
-    },
-    {
-        path: '/dashboard',
-        name: 'DashboardPage',
-        component: () => import('@/pages/DashboardPage.vue'),
+        meta: {
+            authPage: true,
+        },
     },
     {
         path: '/styles-overview',
