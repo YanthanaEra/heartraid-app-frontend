@@ -10,16 +10,6 @@
                         <router-link to="/dashboard">Dashboard</router-link>
                     </li>
                     <li class="nav__item">
-                        <router-link to="/chats">Chats</router-link>
-                        <div class="nav__dropdown">
-                            <ul class="nav__subList">
-                                <li class="nav__subItem">
-                                    <router-link to="/chat">Chat mit XY</router-link>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav__item">
                         <router-link to="/chat-rooms">Chat Rooms</router-link>
                     </li>
                     <li class="nav__item">
@@ -31,6 +21,19 @@
                 <ul class="nav__bar">
                     <li class="nav__item">
                         <router-link to="/profile">Profile</router-link>
+                    </li>
+                    <li class="nav__item">
+                        <router-link to="/admin/users">Admin Users</router-link>
+                    </li>
+                    <li class="nav__item">
+                        <router-link to="/chats">Chats</router-link>
+                        <div class="nav__dropdown">
+                            <ul class="nav__subList">
+                                <li class="nav__subItem">
+                                    <router-link to="/chat">Chat mit XY</router-link>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav__item">
                         <select
@@ -68,5 +71,3 @@ export default defineComponent({
     },
 });
 </script>
-
-<style lang="scss"></style>

@@ -5,7 +5,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import PageHeader from '@/components/layout/pageHeader.vue';
+import PageHeader from '@/pages/components/layout/pageHeader.vue';
 
 export default defineComponent({
     name: 'AppHeartRaid',

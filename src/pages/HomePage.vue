@@ -3,7 +3,7 @@
         <div class="content">
             <img
                 alt="Vue logo"
-                src="../assets/logo.svg"
+                src="@/assets/logo.svg"
             />
             <h1 v-html="$t('homepage.headline')"></h1>
             <div class="grid grid--home">
@@ -20,8 +20,8 @@
 
 <script>
 import { defineComponent } from 'vue';
-import FormLogin from '@/components/forms/login.vue';
-import FormRegister from '@/components/forms/register.vue';
+import FormLogin from '@/pages/components/forms/login.vue';
+import FormRegister from '@/pages/components/forms/register.vue';
 
 export default defineComponent({
     name: 'HomePage',

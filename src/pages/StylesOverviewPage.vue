@@ -103,5 +103,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import '../styles/scss/objects/debugColorMixer.scss';
+@import '@/styles/scss/objects/debugColorMixer.scss';
 </style>

@@ -28,5 +28,12 @@
         "january": "Januar",
         "february": "Februar",
         "march": "März"
+    },
+    "userListNewbies": {
+        "headline": "Neuste User"
+    },
+    "dashboard": {
+        "headline": "Dashboard",
+        "text": "Eine Übersicht aller aktivitäten."
     }
 }
