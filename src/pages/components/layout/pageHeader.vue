@@ -4,16 +4,15 @@
             <nav class="nav nav--main">
                 <ul class="nav__bar">
                     <li class="nav__item">
-                        <router-link to="/">Home</router-link>
+                        <router-link to="/">
+                            <LogoSvg />
+                        </router-link>
                     </li>
                     <li class="nav__item">
                         <router-link to="/dashboard">Dashboard</router-link>
                     </li>
                     <li class="nav__item">
                         <router-link to="/chat-rooms">Chat Rooms</router-link>
-                    </li>
-                    <li class="nav__item">
-                        <router-link to="/styles-overview">Styles</router-link>
                     </li>
                 </ul>
             </nav>
@@ -24,6 +23,13 @@
                     </li>
                     <li class="nav__item">
                         <router-link to="/admin/users">Admin Users</router-link>
+                        <div class="nav__dropdown">
+                            <ul class="nav__subList">
+                                <li class="nav__subItem">
+                                    <router-link to="/styles-overview">Styles</router-link>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav__item">
                         <router-link to="/chats">Chats</router-link>
@@ -53,9 +59,13 @@
 
 <script>
 import { defineComponent } from 'vue';
+import LogoSvg from '@/pages/components/layout/logoSvg.vue';
 
 export default defineComponent({
     name: 'PageHeader',
+    components: {
+        LogoSvg,
+    },
     props: {},
     data: function () {
         const lang = localStorage.getItem('lang') || 'en';

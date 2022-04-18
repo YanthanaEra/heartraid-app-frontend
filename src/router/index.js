@@ -16,6 +16,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '@/pages/ProfilePage.vue'),
     },
     {
+        path: '/login',
+        name: 'LoginPage',
+        component: () => import('@/pages/LoginPage.vue'),
+    },
+    {
+        path: '/register',
+        name: 'RegisterPage',
+        component: () => import('@/pages/RegisterPage.vue'),
+    },
+    {
         path: '/dashboard',
         name: 'DashboardPage',
         component: () => import('@/pages/DashboardPage.vue'),

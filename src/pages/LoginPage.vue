@@ -1,13 +1,10 @@
 <template>
-    <section class="page__content page__content--home">
+    <section class="page__content page__content--login">
         <div class="content">
-            <h1 v-html="$t('homepage.headline')"></h1>
+            <h1>Login</h1>
             <div class="grid grid--home">
                 <div class="grid__itemLogin">
                     <FormLogin />
-                </div>
-                <div class="grid__itemRegister">
-                    <FormRegister />
                 </div>
             </div>
         </div>
@@ -17,28 +14,18 @@
 <script>
 import { defineComponent } from 'vue';
 import FormLogin from '@/pages/components/forms/login.vue';
-import FormRegister from '@/pages/components/forms/register.vue';
 
 export default defineComponent({
-    name: 'HomePage',
+    name: 'LoginPage',
     components: {
         FormLogin,
-        FormRegister,
     },
 });
 </script>
 
 <style lang="scss">
-.grid--home {
+.grid--login {
     flex-direction: row;
     gap: 10px 20px;
-    .grid__itemLogin {
-        flex-direction: column;
-        width: 30%;
-    }
-    .grid__itemRegister {
-        flex-grow: 1;
-        flex-direction: column;
-    }
 }
 </style>
