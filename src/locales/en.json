@@ -23,6 +23,12 @@
         "loginNow": "Login now",
         "day": "Day"
     },
+    "errorMessage": {
+        "emailRequired": "Email address Required",
+        "emailFormat": "This is not a valid email address",
+        "passwordMinLength": "Password must be at least 8 characters long",
+        "passwordsNotMatch": "Passwords do not match"
+    },
     "month": {
         "month": "Month",
         "january": "January",

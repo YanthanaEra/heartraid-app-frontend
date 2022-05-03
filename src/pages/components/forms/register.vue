@@ -1,28 +1,31 @@
 <template>
-    <form
-        @submit.prevent="pressed"
+    <Form
+        @submit="submitData"
+        :validation-schema="schema"
+        v-slot="{ errors }"
         class="form form--register"
     >
+        <!-- @submit.prevent="submitData"-->
         <h3 class="h2 font-neon">
             {{ $t('form.register') }}
         </h3>
-        <div
-            v-if="error"
-            class="form__row"
-        >
-            <p>{{ error.message }}</p>
-        </div>
         <div class="form__row">
             <div class="form__item form__item--username">
                 <label for="email">{{ $t('form.email') }}</label>
-                <input
-                    v-model="email"
-                    placeholder="your@mailaddress.com"
-                    type="text"
+                <Field
+                    as="input"
                     name="email"
+                    type="email"
                     id="formRegisterEmail"
                     class="formInput__email"
+                    placeholder="your@mailaddress.com"
                 />
+                <div
+                    v-if="errors.email"
+                    class="alert"
+                >
+                    {{ $t(errors.email) }}
+                </div>
             </div>
         </div>
         <div class="form__row">
@@ -30,25 +33,41 @@
                 <label for="password">
                     {{ $t('form.password') }}
                 </label>
-                <input
-                    v-model="password"
-                    type="password"
+                <Field
+                    as="input"
                     name="password"
+                    type="password"
+                    minlength="8"
+                    v-model="password"
                     id="formRegisterPassword"
                     class="formInput__password"
                 />
+                <div
+                    v-if="errors.password"
+                    class="alert"
+                >
+                    {{ $t(errors.password) }}
+                </div>
             </div>
             <div class="form__item form__item--passwordConfirm">
                 <label for="password">
-                    {{ $t('form.passwordConfirm') }}
+                    {{ $t('form.passwordRepeat') }}
                 </label>
-                <input
-                    v-model="passwordConfirm"
-                    type="password"
+                <Field
+                    as="input"
                     name="passwordConfirm"
+                    type="password"
+                    minlength="8"
+                    v-model="passwordConfirm"
                     id="formRegisterPasswordConfirm"
                     class="formInput__password"
                 />
+                <div
+                    v-if="errors.passwordConfirm"
+                    class="alert"
+                >
+                    {{ $t(errors.passwordConfirm) }}
+                </div>
             </div>
         </div>
         <div class="form__row">
@@ -60,13 +79,15 @@
                 />
             </div>
         </div>
-    </form>
+    </Form>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 // import firebase from 'firebase/compat/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+//import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { Form, Field } from 'vee-validate';
+import * as yup from 'yup';
 /*
 import { useRouter } from 'vue-router';
 const register = () => {
@@ -87,17 +108,27 @@ https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIz
 
 export default defineComponent({
     name: 'formRegister',
+    components: {
+        Form,
+        Field,
+    },
     data() {
+        const schema = yup.object().shape({
+            email: yup.string().required('errorMessage.emailRequired').trim().email('errorMessage.emailFormat'),
+            password: yup.string().required().min(8, 'errorMessage.passwordMinLength'),
+            passwordConfirm: yup.string().oneOf([yup.ref('password')], 'errorMessage.passwordsNotMatch'),
+        });
         return {
+            schema,
             username: '',
-            email: '',
+            //email: '',
             password: '',
             passwordConfirm: '',
             error: '',
         };
     },
     methods: {
-        async pressed() {
+        /*async submitData() {
             try {
                 const auth = getAuth();
                 const user = createUserWithEmailAndPassword(auth, this.email, this.password);
@@ -108,6 +139,9 @@ export default defineComponent({
                 console.log('bist in error');
                 console.log({ error });
             }
+        },*/
+        submitData(values) {
+            console.log(values);
         },
     },
 });

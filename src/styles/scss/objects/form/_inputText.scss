@@ -1,4 +1,5 @@
 [type='text'],
+[type='email'],
 [type='password'],
 textarea,
 select {
@@ -17,6 +18,7 @@ select {
     transition: box-shadow 0.3s, color 0.3s, border 0.3s;
 }
 [type='text']:focus,
+[type='email']:focus,
 [type='password']:focus,
 textarea:focus,
 select:focus {
@@ -25,6 +27,20 @@ select:focus {
     0 0 3px $pink,
     0 0 10px $pink-light;
     transition: box-shadow 0.3s, color 0.3s, border 0.3s;
+}
+[type='text']:valid,
+[type='email']:valid,
+[type='password']:valid,
+textarea:valid,
+select:valid {
+    //border-color: $green;
+}
+[type='text']:invalid,
+[type='email']:invalid,
+[type='password']:invalid,
+textarea:invalid,
+select:invalid {
+    border-color: $red;
 }
 input:-internal-autofill-selected {
     appearance: menulist-button;
