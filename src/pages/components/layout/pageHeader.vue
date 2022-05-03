@@ -12,6 +12,12 @@
                         <router-link to="/dashboard">Dashboard</router-link>
                     </li>
                     <li class="nav__item">
+                        <router-link to="/register">Register</router-link>
+                    </li>
+                    <li class="nav__item">
+                        <router-link to="/login">Login</router-link>
+                    </li>
+                    <li class="nav__item">
                         <router-link to="/chat-rooms">Chat Rooms</router-link>
                     </li>
                 </ul>

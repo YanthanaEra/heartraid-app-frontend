@@ -1,87 +1,28 @@
 <template>
     <form
-        action=""
+        @submit.prevent="pressed"
         class="form form--register"
     >
         <h3 class="h2 font-neon">
             {{ $t('form.register') }}
         </h3>
-        <div class="form__row">
-            <div class="form__item form__item--username">
-                <label for="username">{{ $t('form.username') }}</label>
-                <input
-                    id="formRegisterUsername"
-                    type="text"
-                    name="username"
-                    class="formInput__username"
-                />
-            </div>
+        <div
+            v-if="error"
+            class="form__row"
+        >
+            <p>{{ error.message }}</p>
         </div>
         <div class="form__row">
             <div class="form__item form__item--username">
                 <label for="email">{{ $t('form.email') }}</label>
                 <input
-                    id="formRegisterEmail"
+                    v-model="email"
+                    placeholder="your@mailaddress.com"
                     type="text"
                     name="email"
+                    id="formRegisterEmail"
                     class="formInput__email"
                 />
-            </div>
-        </div>
-        <div class="form__row">
-            <div class="form__item form__item--gender">
-                <label for="gender">{{ $t('form.gender') }}</label>
-                <select
-                    name="gender"
-                    id="formRegisterGender"
-                >
-                    <option value="genderDiverse">{{ $t('form.diverse') }}</option>
-                    <option value="genderFemale">{{ $t('form.female') }}</option>
-                    <option value="genderMale">{{ $t('form.male') }}</option>
-                </select>
-            </div>
-            <div class="form__item form__item--birthday">
-                <div class="form__item form__item--birthday">
-                    <label for="birthDay">{{ $t('form.birthday') }}</label>
-                    <select
-                        name="birthDay"
-                        id="formRegisterBirthDay"
-                    >
-                        <option value="birthdayDay">{{ $t('form.day') }}</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                    </select>
-                </div>
-                <div class="form__item form__item--birthday">
-                    <label for="birthdayMonth">{{ $t('form.birthMonth') }}</label>
-                    <select
-                        id="formRegisterBirthMonth"
-                        name="birthdayMonth"
-                    >
-                        <option value="birthdayMonth">{{ $t('month.month') }}</option>
-                        <option value="january">{{ $t('month.january') }}</option>
-                        <option value="february">{{ $t('month.february') }}</option>
-                        <option value="march">{{ $t('month.march') }}</option>
-                    </select>
-                </div>
-                <div class="form__item form__item--birthday">
-                    <label for="birthyear">{{ $t('form.birthYear') }}</label>
-                    <select
-                        name="birthyear"
-                        id="formRegisterBirthYear"
-                    >
-                        <option value="1922">1922</option>
-                        <option value="1923">1923</option>
-                        <option value="1924">1924</option>
-                    </select>
-                </div>
             </div>
         </div>
         <div class="form__row">
@@ -90,18 +31,22 @@
                     {{ $t('form.password') }}
                 </label>
                 <input
+                    v-model="password"
                     type="password"
                     name="password"
                     id="formRegisterPassword"
                     class="formInput__password"
                 />
             </div>
-            <div class="form__item form__item--passwordRepeat">
-                <label for="password">{{ $t('form.passwordRepeat') }}</label>
+            <div class="form__item form__item--passwordConfirm">
+                <label for="password">
+                    {{ $t('form.passwordConfirm') }}
+                </label>
                 <input
-                    id="formRegisterPasswordRepeat"
+                    v-model="passwordConfirm"
                     type="password"
-                    name="password"
+                    name="passwordConfirm"
+                    id="formRegisterPasswordConfirm"
                     class="formInput__password"
                 />
             </div>
@@ -110,8 +55,8 @@
             <div class="form__item form__item--submit">
                 <input
                     type="submit"
-                    :value="$t('form.registerNow')"
                     class="button"
+                    :value="$t('form.registerNow')"
                 />
             </div>
         </div>
@@ -120,10 +65,51 @@
 
 <script>
 import { defineComponent } from 'vue';
+// import firebase from 'firebase/compat/app';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+/*
+import { useRouter } from 'vue-router';
+const register = () => {
+    // need .value because ref()
+    createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+        .then((data) => {
+            console.log('Successfully registered!');
+            router.push('/dashboard'); // redirect to the feed
+        })
+        .catch((error) => {
+            console.log(error.code);
+            alert(error.message);
+        });
+};
+// https://firebase.google.com/docs/reference/rest/auth?hl=en
+https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyCGqOJHfBkFsOvPCY-eE7glmERh9Ob4YnM
+*/
 
 export default defineComponent({
     name: 'formRegister',
-    props: {},
+    data() {
+        return {
+            username: '',
+            email: '',
+            password: '',
+            passwordConfirm: '',
+            error: '',
+        };
+    },
+    methods: {
+        async pressed() {
+            try {
+                const auth = getAuth();
+                const user = createUserWithEmailAndPassword(auth, this.email, this.password);
+                console.log(user);
+                console.log('bist in try');
+                this.$router.replace({ name: 'DashboardPage' });
+            } catch (error) {
+                console.log('bist in error');
+                console.log({ error });
+            }
+        },
+    },
 });
 </script>
 
