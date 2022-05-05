@@ -8,6 +8,14 @@
         <h3 class="h2 font-neon">
             {{ $t('form.login') }}
         </h3>
+        <div
+            v-if="error"
+            class="form__row"
+        >
+            <div class="alert">
+                {{ $t(`errorMessage.${error}`) }}
+            </div>
+        </div>
         <div class="form__row">
             <div class="form__item form__item--username">
                 <label for="email">{{ $t('form.email') }}</label>
@@ -55,11 +63,18 @@
         </div>
         <div class="form__row">
             <div class="form__item form__item--submit">
-                <input
+                <button
                     type="submit"
-                    :value="$t('form.loginNow')"
                     class="button"
-                />
+                >
+                    <span
+                        v-if="isLoading"
+                        class="loadingIcon16"
+                    >
+                        <span class="loadingIcon16__icon"></span>
+                    </span>
+                    <span v-else>{{ $t('form.loginNow') }}</span>
+                </button>
             </div>
         </div>
     </Form>
@@ -69,6 +84,8 @@
 import { defineComponent } from 'vue';
 import { Form, Field } from 'vee-validate';
 import * as yup from 'yup';
+import axios from 'axios';
+import { FIREBASE_API_KEY } from '@/firebase.js';
 
 export default defineComponent({
     name: 'formLogin',
@@ -85,12 +102,35 @@ export default defineComponent({
             schema,
             email: '',
             password: '',
+            error: '',
+            isLoading: false,
         };
     },
     props: {},
     methods: {
         submitData(values) {
+            this.isLoading = true;
+            this.error = '';
             console.log(values);
+            const signInData = {
+                email: values.loginEmail,
+                password: values.loginPassword,
+                returnSecureToken: true,
+            };
+            axios
+                .post(
+                    `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_API_KEY}`,
+                    signInData
+                )
+                .then((response) => {
+                    console.log('response: ', response);
+                    this.isLoading = false;
+                })
+                .catch((error) => {
+                    // console.log({ error });
+                    this.error = error.response.data.error.message;
+                    this.isLoading = false;
+                });
         },
     },
 });

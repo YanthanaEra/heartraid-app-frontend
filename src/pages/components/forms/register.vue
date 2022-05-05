@@ -4,6 +4,7 @@
         :validation-schema="schema"
         v-slot="{ errors }"
         class="form form--register"
+        autocomplete="off"
     >
         <!-- @submit.prevent="submitData"-->
         <h3 class="h2 font-neon">
@@ -160,14 +161,15 @@ export default defineComponent({
         },*/
         submitData(values) {
             this.isLoading = true;
+            this.error = '';
             console.log(values);
-            const sineupDO = {
+            const signUpData = {
                 email: values.email,
                 password: values.password,
                 returnSecureToken: true,
             };
             axios
-                .post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`, sineupDO)
+                .post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`, signUpData)
                 .then((response) => {
                     console.log('response: ', response);
                     this.isLoading = false;

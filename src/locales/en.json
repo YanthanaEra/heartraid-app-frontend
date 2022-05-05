@@ -24,11 +24,13 @@
         "day": "Day"
     },
     "errorMessage": {
-        "emailRequired": "Email address Required",
-        "emailFormat": "This is not a valid email address",
+        "emailRequired": "Email address Required.",
+        "emailFormat": "This is not a valid email address.",
         "EMAIL_EXISTS": "The email address is already in use by another account.",
-        "passwordMinLength": "Password must be at least 8 characters long",
-        "passwordsNotMatch": "Passwords do not match"
+        "MISSING_EMAIL": "E-mail address could not be found.",
+        "INVALID_PASSWORD": "The password is not valid.",
+        "passwordMinLength": "Password must be at least 8 characters long.",
+        "passwordsNotMatch": "Passwords do not match."
     },
     "month": {
         "month": "Month",
