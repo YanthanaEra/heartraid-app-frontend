@@ -1,6 +1,8 @@
 <template>
-    <form
-        action=""
+    <Form
+        @submit="submitData"
+        :validation-schema="schema"
+        v-slot="{ errors }"
         class="form form--login"
     >
         <h3 class="h2 font-neon">
@@ -8,13 +10,23 @@
         </h3>
         <div class="form__row">
             <div class="form__item form__item--username">
-                <label for="username">{{ $t('form.username') }}</label>
-                <input
-                    id="formLoginUsername"
-                    type="text"
-                    name="username"
-                    class="formInput__username"
+                <label for="email">{{ $t('form.email') }}</label>
+                <Field
+                    as="input"
+                    name="loginEmail"
+                    type="email"
+                    id="formLoginEmail"
+                    class="formInput__email"
+                    placeholder="your@mailaddress.com"
                 />
+                <transition name="fade">
+                    <div
+                        v-if="errors.loginEmail"
+                        class="alert"
+                    >
+                        {{ $t(errors.loginEmail) }}
+                    </div>
+                </transition>
             </div>
         </div>
         <div class="form__row">
@@ -22,12 +34,23 @@
                 <label for="password">
                     {{ $t('form.password') }}
                 </label>
-                <input
+                <Field
+                    as="input"
+                    name="loginPassword"
+                    type="password"
+                    minlength="8"
+                    v-model="password"
                     id="formLoginPassword"
-                    type="text"
-                    name="password"
                     class="formInput__password"
                 />
+                <transition name="fade">
+                    <div
+                        v-if="errors.loginPassword"
+                        class="alert"
+                    >
+                        {{ $t(errors.loginPassword) }}
+                    </div>
+                </transition>
             </div>
         </div>
         <div class="form__row">
@@ -39,15 +62,37 @@
                 />
             </div>
         </div>
-    </form>
+    </Form>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
+import { Form, Field } from 'vee-validate';
+import * as yup from 'yup';
 
 export default defineComponent({
     name: 'formLogin',
+    components: {
+        Form,
+        Field,
+    },
+    data() {
+        const schema = yup.object().shape({
+            loginEmail: yup.string().required('errorMessage.emailRequired').trim().email('errorMessage.emailFormat'),
+            loginPassword: yup.string().required().min(8, 'errorMessage.passwordMinLength'),
+        });
+        return {
+            schema,
+            email: '',
+            password: '',
+        };
+    },
     props: {},
+    methods: {
+        submitData(values) {
+            console.log(values);
+        },
+    },
 });
 </script>
 

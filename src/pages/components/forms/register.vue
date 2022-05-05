@@ -9,6 +9,14 @@
         <h3 class="h2 font-neon">
             {{ $t('form.register') }}
         </h3>
+        <div
+            v-if="error"
+            class="form__row"
+        >
+            <div class="alert">
+                {{ $t(`errorMessage.${error}`) }}
+            </div>
+        </div>
         <div class="form__row">
             <div class="form__item form__item--username">
                 <label for="email">{{ $t('form.email') }}</label>
@@ -72,11 +80,18 @@
         </div>
         <div class="form__row">
             <div class="form__item form__item--submit">
-                <input
+                <button
                     type="submit"
                     class="button"
-                    :value="$t('form.registerNow')"
-                />
+                >
+                    <span
+                        v-if="isLoading"
+                        class="loadingIcon16"
+                    >
+                        <span class="loadingIcon16__icon"></span>
+                    </span>
+                    <span v-else>{{ $t('form.registerNow') }}</span>
+                </button>
             </div>
         </div>
     </Form>
@@ -88,6 +103,8 @@ import { defineComponent } from 'vue';
 //import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Form, Field } from 'vee-validate';
 import * as yup from 'yup';
+import axios from 'axios';
+import { FIREBASE_API_KEY } from '@/firebase.js';
 /*
 import { useRouter } from 'vue-router';
 const register = () => {
@@ -125,6 +142,7 @@ export default defineComponent({
             password: '',
             passwordConfirm: '',
             error: '',
+            isLoading: false,
         };
     },
     methods: {
@@ -141,7 +159,24 @@ export default defineComponent({
             }
         },*/
         submitData(values) {
+            this.isLoading = true;
             console.log(values);
+            const sineupDO = {
+                email: values.email,
+                password: values.password,
+                returnSecureToken: true,
+            };
+            axios
+                .post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`, sineupDO)
+                .then((response) => {
+                    console.log('response: ', response);
+                    this.isLoading = false;
+                })
+                .catch((error) => {
+                    // console.log({ error });
+                    this.error = error.response.data.error.message;
+                    this.isLoading = false;
+                });
         },
     },
 });

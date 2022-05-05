@@ -1,0 +1,35 @@
+@import '../../global/global';
+
+/*  Form Loading
+----------------------------------------------------------------------------------------------- */
+.loadingIcon16 {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+}
+.loadingIcon16__icon {
+    position: relative;
+    top: 0;
+    border: 3px solid rgba($turquoise, 0.2);
+    border-top: 3px solid $turquoise;
+    border-right-color: rgba($turquoise, 0.1);
+    border-bottom-color: rgba($turquoise, 0.3);
+    border-left-color: rgba($turquoise, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 0 2px $turquoise;
+    width: 22px;
+    height: 22px;
+    box-sizing: border-box;
+    display: inline-block;
+    animation: spin 0.4s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

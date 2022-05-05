@@ -26,6 +26,7 @@
     "errorMessage": {
         "emailRequired": "Email address Required",
         "emailFormat": "This is not a valid email address",
+        "EMAIL_EXISTS": "The email address is already in use by another account.",
         "passwordMinLength": "Password must be at least 8 characters long",
         "passwordsNotMatch": "Passwords do not match"
     },
