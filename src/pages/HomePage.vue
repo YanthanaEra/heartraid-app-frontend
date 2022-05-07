@@ -3,11 +3,11 @@
         <div class="content">
             <h1 v-html="$t('homepage.headline')"></h1>
             <div class="grid grid--home">
-                <div class="grid__itemLogin">
-                    <FormLogin />
-                </div>
                 <div class="grid__itemRegister">
                     <FormRegister />
+                </div>
+                <div class="grid__itemLogin">
+                    <FormLogin />
                 </div>
             </div>
         </div>

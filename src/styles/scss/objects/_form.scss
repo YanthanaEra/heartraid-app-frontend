@@ -28,3 +28,7 @@ form {
         margin-top: 0.6rem;
     }
 }
+.form__item--password,
+.form__item--passwordConfirm {
+    flex-basis: 50%;
+}

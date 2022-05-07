@@ -29,6 +29,7 @@
         "EMAIL_EXISTS": "The email address is already in use by another account.",
         "MISSING_EMAIL": "E-mail address could not be found.",
         "INVALID_PASSWORD": "The password is not valid.",
+        "UNKNOWN_ERROR": "An unknown error has occurred.",
         "passwordMinLength": "Password must be at least 8 characters long.",
         "passwordsNotMatch": "Passwords do not match."
     },

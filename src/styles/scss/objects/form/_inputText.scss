@@ -1,3 +1,11 @@
+@import '../../global/global';
+
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-image: none !important;
+    background-color: inherit !important;
+    color: inherit !important;
+}
 [type='text'],
 [type='email'],
 [type='password'],
@@ -10,43 +18,27 @@ select {
     font-family: $font-family;
     line-height: 1rem;
     color: $form-item-text-color;
-    border-style:double;
+    border-style: double;
     border-width: 4px;
     border-color: $form-item-border-color;
     border-radius: $form-item-border-radius;
     background-color: $form-item-background;
     transition: box-shadow 0.3s, color 0.3s, border 0.3s;
-}
-[type='text']:focus,
-[type='email']:focus,
-[type='password']:focus,
-textarea:focus,
-select:focus {
-    border-style: solid;
-    box-shadow:
-    0 0 3px $pink,
-    0 0 10px $pink-light;
-    transition: box-shadow 0.3s, color 0.3s, border 0.3s;
-}
-[type='text']:valid,
-[type='email']:valid,
-[type='password']:valid,
-textarea:valid,
-select:valid {
-    //border-color: $green;
-}
-[type='text']:invalid,
-[type='email']:invalid,
-[type='password']:invalid,
-textarea:invalid,
-select:invalid {
-    border-color: $red;
-}
-input:-internal-autofill-selected {
-    appearance: menulist-button;
-    background-image: none !important;
-    background-color: inherit !important;
-    color: inherit !important;
+
+    &::placeholder {
+        color: rgba($white, 0.5);
+    }
+    &:focus {
+        border-style: solid;
+        box-shadow: 0 0 3px $pink, 0 0 10px $pink-light;
+        transition: box-shadow 0.3s, color 0.3s, border 0.3s;
+    }
+    &:valid {
+        //border-color: $green;
+    }
+    &:invalid {
+        border-color: $red;
+    }
 }
 label {
     font-family: $font-family-headline;

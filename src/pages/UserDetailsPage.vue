@@ -49,7 +49,7 @@ export default defineComponent({
     components: {},
     data() {
         return {
-            user: Store.state.userDetailsData,
+            user: Store.state.userCurrentData,
         };
     },
 });

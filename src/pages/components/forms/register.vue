@@ -104,8 +104,6 @@ import { defineComponent } from 'vue';
 //import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Form, Field } from 'vee-validate';
 import * as yup from 'yup';
-import axios from 'axios';
-import { FIREBASE_API_KEY } from '@/firebase.js';
 /*
 import { useRouter } from 'vue-router';
 const register = () => {
@@ -162,21 +160,17 @@ export default defineComponent({
         submitData(values) {
             this.isLoading = true;
             this.error = '';
-            console.log(values);
-            const signUpData = {
-                email: values.email,
-                password: values.password,
-                returnSecureToken: true,
-            };
-            axios
-                .post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`, signUpData)
-                .then((response) => {
-                    console.log('response: ', response);
+            this.$store
+                .dispatch('signUp', {
+                    email: values.email,
+                    password: values.password,
+                })
+                .then(() => {
                     this.isLoading = false;
+                    console.log(this.$store.state);
                 })
                 .catch((error) => {
-                    // console.log({ error });
-                    this.error = error.response.data.error.message;
+                    this.error = error.message;
                     this.isLoading = false;
                 });
         },
@@ -185,7 +179,16 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import '@/styles/scss/global/global';
 .form--register {
-    background-color: rgba(4, 226, 255, 0.274);
+    padding: 2.2rem 2rem;
+    background-color: rgba($purple, 1);
+    border-radius: 10px;
+
+    .button {
+        background-color: $green;
+        color: $purple;
+        border-color: $purple;
+    }
 }
 </style>

@@ -1,6 +1,7 @@
-export const userDetailsData = [
+export const userCurrentData = [
     {
-        id: 123456,
+        userId: null,
+        token: null,
         statusOnline: 'online',
         username: 'KätzchenFreundin',
         description: 'I love cats.',

@@ -50,6 +50,21 @@
     </div>
 </template>
 
+<script>
+import { defineComponent } from 'vue';
+import Store from '@/store/index';
+
+export default defineComponent({
+    name: 'UserListNewbies',
+    components: {},
+    data() {
+        return {
+            userListNewbies: Store.state.userListNewbiesData,
+        };
+    },
+});
+</script>
+
 <style lang="scss">
 @import '@/styles/scss/global/global';
 
@@ -122,18 +137,3 @@
     font-weight: 800;
 }
 </style>
-
-<script>
-import { defineComponent } from 'vue';
-import Store from '@/store/index';
-
-export default defineComponent({
-    name: 'UserListNewbies',
-    components: {},
-    data() {
-        return {
-            userListNewbies: Store.state.userListNewbiesData,
-        };
-    },
-});
-</script>

@@ -21,18 +21,19 @@
                 <label for="email">{{ $t('form.email') }}</label>
                 <Field
                     as="input"
-                    name="loginEmail"
+                    name="email"
                     type="email"
                     id="formLoginEmail"
                     class="formInput__email"
                     placeholder="your@mailaddress.com"
+                    validateOnBlur
                 />
                 <transition name="fade">
                     <div
-                        v-if="errors.loginEmail"
+                        v-if="errors.email"
                         class="alert"
                     >
-                        {{ $t(errors.loginEmail) }}
+                        {{ $t(errors.email) }}
                     </div>
                 </transition>
             </div>
@@ -44,19 +45,20 @@
                 </label>
                 <Field
                     as="input"
-                    name="loginPassword"
+                    name="password"
                     type="password"
                     minlength="8"
                     v-model="password"
                     id="formLoginPassword"
                     class="formInput__password"
+                    validateOnBlur
                 />
                 <transition name="fade">
                     <div
-                        v-if="errors.loginPassword"
+                        v-if="errors.password"
                         class="alert"
                     >
-                        {{ $t(errors.loginPassword) }}
+                        {{ $t(errors.password) }}
                     </div>
                 </transition>
             </div>
@@ -84,8 +86,6 @@
 import { defineComponent } from 'vue';
 import { Form, Field } from 'vee-validate';
 import * as yup from 'yup';
-import axios from 'axios';
-import { FIREBASE_API_KEY } from '@/firebase.js';
 
 export default defineComponent({
     name: 'formLogin',
@@ -95,8 +95,8 @@ export default defineComponent({
     },
     data() {
         const schema = yup.object().shape({
-            loginEmail: yup.string().required('errorMessage.emailRequired').trim().email('errorMessage.emailFormat'),
-            loginPassword: yup.string().required().min(8, 'errorMessage.passwordMinLength'),
+            email: yup.string().required('errorMessage.emailRequired').trim().email('errorMessage.emailFormat'),
+            password: yup.string().required().min(8, 'errorMessage.passwordMinLength'),
         });
         return {
             schema,
@@ -111,24 +111,18 @@ export default defineComponent({
         submitData(values) {
             this.isLoading = true;
             this.error = '';
-            console.log(values);
-            const signInData = {
-                email: values.loginEmail,
-                password: values.loginPassword,
-                returnSecureToken: true,
-            };
-            axios
-                .post(
-                    `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_API_KEY}`,
-                    signInData
-                )
-                .then((response) => {
-                    console.log('response: ', response);
+            console.log('login values:', values);
+            this.$store
+                .dispatch('signIn', {
+                    email: values.email,
+                    password: values.password,
+                })
+                .then(() => {
                     this.isLoading = false;
+                    console.log('login erfolgreich');
                 })
                 .catch((error) => {
-                    // console.log({ error });
-                    this.error = error.response.data.error.message;
+                    this.error = error.message;
                     this.isLoading = false;
                 });
         },
@@ -137,7 +131,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import '@/styles/scss/global/global';
 .form--login {
-    background-color: rgba(255, 4, 192, 0.274);
+    padding: 2.2rem 2rem;
+    background-color: rgba($pink, 1);
+    border-radius: 10px;
 }
 </style>
