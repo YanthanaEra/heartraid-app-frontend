@@ -6,7 +6,6 @@
         class="form form--register"
         autocomplete="off"
     >
-        <!-- @submit.prevent="submitData"-->
         <h3 class="h2 font-neon">
             {{ $t('form.register') }}
         </h3>
@@ -100,27 +99,8 @@
 
 <script>
 import { defineComponent } from 'vue';
-// import firebase from 'firebase/compat/app';
-//import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Form, Field } from 'vee-validate';
 import * as yup from 'yup';
-/*
-import { useRouter } from 'vue-router';
-const register = () => {
-    // need .value because ref()
-    createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-        .then((data) => {
-            console.log('Successfully registered!');
-            router.push('/dashboard'); // redirect to the feed
-        })
-        .catch((error) => {
-            console.log(error.code);
-            alert(error.message);
-        });
-};
-// https://firebase.google.com/docs/reference/rest/auth?hl=en
-https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyCGqOJHfBkFsOvPCY-eE7glmERh9Ob4YnM
-*/
 
 export default defineComponent({
     name: 'formRegister',
@@ -137,7 +117,7 @@ export default defineComponent({
         return {
             schema,
             username: '',
-            //email: '',
+            email: '',
             password: '',
             passwordConfirm: '',
             error: '',
@@ -145,18 +125,6 @@ export default defineComponent({
         };
     },
     methods: {
-        /*async submitData() {
-            try {
-                const auth = getAuth();
-                const user = createUserWithEmailAndPassword(auth, this.email, this.password);
-                console.log(user);
-                console.log('bist in try');
-                this.$router.replace({ name: 'DashboardPage' });
-            } catch (error) {
-                console.log('bist in error');
-                console.log({ error });
-            }
-        },*/
         submitData(values) {
             this.isLoading = true;
             this.error = '';
@@ -167,7 +135,7 @@ export default defineComponent({
                 })
                 .then(() => {
                     this.isLoading = false;
-                    console.log(this.$store.state);
+                    console.log('registerung erfolgreich');
                 })
                 .catch((error) => {
                     this.error = error.message;

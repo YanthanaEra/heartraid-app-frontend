@@ -1,19 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/pages/HomePage.vue';
+import store from '@/store';
 
 const routes = [
     {
         path: '/',
         name: 'HomePage',
         component: HomePage,
+        beforeEnter: (to, from, next) => {
+            //console.log(to);
+            //console.log(from);
+            //console.log(next);
+            if (store.getters.idAuthenticated) {
+                next('/dashboard');
+            } else {
+                next();
+            }
+        },
     },
     {
         path: '/profile',
         name: 'ProfilePage',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '@/pages/ProfilePage.vue'),
+        component: () => import('@/pages/ProfilePage.vue'),
     },
     {
         path: '/dashboard',
@@ -74,6 +82,14 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requireAuth && !store.getters.idAuthenticated) {
+        next('/');
+    } else {
+        next();
+    }
 });
 
 export default router;

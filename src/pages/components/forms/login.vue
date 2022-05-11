@@ -111,7 +111,6 @@ export default defineComponent({
         submitData(values) {
             this.isLoading = true;
             this.error = '';
-            console.log('login values:', values);
             this.$store
                 .dispatch('signIn', {
                     email: values.email,
@@ -120,6 +119,7 @@ export default defineComponent({
                 .then(() => {
                     this.isLoading = false;
                     console.log('login erfolgreich');
+                    this.$router.push({ path: '/dashboard' });
                 })
                 .catch((error) => {
                     this.error = error.message;

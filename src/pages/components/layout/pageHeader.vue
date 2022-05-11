@@ -18,6 +18,9 @@
                         <router-link to="/login">Login</router-link>
                     </li>
                     <li class="nav__item">
+                        <button @click="signOut()">Logout</button>
+                    </li>
+                    <li class="nav__item">
                         <router-link to="/chat-rooms">Chat Rooms</router-link>
                     </li>
                 </ul>
@@ -83,6 +86,15 @@ export default defineComponent({
         handleChange(event) {
             localStorage.setItem('lang', event.target.value);
             window.location.reload();
+        },
+        async signOut() {
+            try {
+                await this.$store.dispatch('signOut');
+                this.$router.push('/');
+                console.log('erfolgreich ausgeloggt');
+            } catch (error) {
+                console.log(error);
+            }
         },
     },
 });

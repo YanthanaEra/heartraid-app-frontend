@@ -12,6 +12,10 @@ export default defineComponent({
     components: {
         PageHeader,
     },
+    created() {
+        this.$store.dispatch('autoSignIn');
+        console.log('created store:', this.$store);
+    },
 });
 </script>
 
