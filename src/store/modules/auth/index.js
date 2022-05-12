@@ -5,11 +5,15 @@ let timer;
 const state = {
     userId: null,
     token: null,
+    autoSignOutHasPassed: false,
 };
 const mutations = {
     setUser(state, payload) {
         state.userId = payload.userId;
         state.token = payload.token;
+    },
+    setAutoSignOutHasPassed(state, payload) {
+        state.autoSignOutHasPassed = payload.flag;
     },
 };
 const actions = {
@@ -30,8 +34,8 @@ const actions = {
         return axios
             .post(url, authData)
             .then((response) => {
-                const expiresIn = Number(response.data.expiresIn) * 1000;
-                //const expiresIn = 3 * 1000; // = 3sek
+                //const expiresIn = Number(response.data.expiresIn) * 1000;
+                const expiresIn = 20 * 1000; // = 20sek
                 const expDate = new Date().getTime() + expiresIn;
 
                 localStorage.setItem('token', response.data.idToken);
@@ -100,13 +104,24 @@ const actions = {
             userId: null,
         });
     },
+    autoSignOutHasPassedAction(context, payload) {
+        context.commit('setAutoSignOutHasPassed', {
+            ...payload,
+        });
+    },
     autoSignOut(context) {
         // server-kommunikation, falls notwendig
+        context.dispatch('autoSignOutHasPassedAction', {
+            flag: true,
+        });
         context.dispatch('signOut');
+        console.log('autoSignOut ist durchgelaufen');
     },
 };
 const getters = {
     idAuthenticated: (state) => !!state.token,
+    // TODO: wenn der user ausgeloggt ist, sich im local storage nen fake token anlegt, könnte er trozdem aus das dashboard zugreifen
+    isAutoSignOutHasPassed: (state) => state.autoSignOutHasPassed,
 };
 
 const authModule = {
