@@ -10,7 +10,7 @@ const routes = [
             //console.log(to);
             //console.log(from);
             //console.log(next);
-            if (store.getters.idAuthenticated) {
+            if (store.getters.isAuthenticated) {
                 next('/dashboard');
             } else {
                 next();
@@ -84,7 +84,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    if (to.meta.requireAuth && !store.getters.idAuthenticated) {
+    if (to.meta.requireAuth && !store.getters.isAuthenticated) {
         next('/');
     } else {
         next();

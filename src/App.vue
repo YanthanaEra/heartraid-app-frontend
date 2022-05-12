@@ -13,9 +13,7 @@ export default defineComponent({
         PageHeader,
     },
     data() {
-        return {
-            isAutoSignOutHasPassed: this.$store.getters.isAutoSignOutHasPassed,
-        };
+        return {};
     },
     created() {
         this.$store.dispatch('autoSignIn');
