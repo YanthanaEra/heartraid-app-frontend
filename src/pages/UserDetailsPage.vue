@@ -42,14 +42,13 @@
 
 <script>
 import { defineComponent } from 'vue';
-import Store from '@/store/index';
 
 export default defineComponent({
     name: 'UserDetailsPage',
     components: {},
     data() {
         return {
-            user: Store.state.userCurrentData,
+            user: this.$store.state.userCurrentData,
         };
     },
 });

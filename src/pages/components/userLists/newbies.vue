@@ -52,14 +52,13 @@
 
 <script>
 import { defineComponent } from 'vue';
-import Store from '@/store/index';
 
 export default defineComponent({
     name: 'UserListNewbies',
     components: {},
     data() {
         return {
-            userListNewbies: Store.state.userListNewbiesData,
+            userListNewbies: this.$store.state.userListNewbiesData,
         };
     },
 });

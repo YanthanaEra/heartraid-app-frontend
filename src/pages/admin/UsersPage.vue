@@ -38,14 +38,13 @@
 
 <script>
 import { defineComponent } from 'vue';
-import Store from '@/store/index';
 
 export default defineComponent({
     name: 'AdminUsersPage',
     components: {},
     data() {
         return {
-            userList: Store.state.adminUserList,
+            userList: this.$store.state.adminUserList,
             userItems: 0,
         };
     },

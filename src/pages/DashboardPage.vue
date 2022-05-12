@@ -34,7 +34,6 @@
 
 <script>
 import { defineComponent } from 'vue';
-import Store from '@/store/index';
 import UserListNewbies from '@/pages/components/userLists/newbies.vue';
 
 export default defineComponent({
@@ -44,7 +43,7 @@ export default defineComponent({
     },
     data() {
         return {
-            dashboard: Store.state.dashboardData,
+            dashboard: this.$store.state.dashboardData,
         };
     },
 });
