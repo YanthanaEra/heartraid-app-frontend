@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomePage from '@/pages/HomePage.vue';
 import store from '@/store';
 
 const routes = [
     {
         path: '/',
         name: 'HomePage',
-        component: HomePage,
+        component: () => import('@/pages/HomePage.vue'),
         beforeEnter: (to, from, next) => {
             //console.log(to);
             //console.log(from);
