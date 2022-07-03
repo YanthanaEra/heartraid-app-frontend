@@ -18,19 +18,6 @@ const routes = [
         },
     },
     {
-        path: '/profile',
-        name: 'ProfilePage',
-        component: () => import('@/pages/ProfilePage.vue'),
-    },
-    {
-        path: '/dashboard',
-        name: 'DashboardPage',
-        component: () => import('@/pages/DashboardPage.vue'),
-        meta: {
-            requireAuth: true,
-        },
-    },
-    {
         path: '/login',
         name: 'LoginPage',
         component: () => import('@/pages/LoginPage.vue'),
@@ -47,34 +34,70 @@ const routes = [
         },
     },
     {
+        path: '/dashboard',
+        name: 'DashboardPage',
+        component: () => import('@/pages/DashboardPage.vue'),
+        meta: {
+            requireAuth: true,
+        },
+    },
+    {
         path: '/styles-overview',
         name: 'StylesOverviewPage',
         component: () => import('@/pages/StylesOverviewPage.vue'),
     },
     {
+        path: '/backend',
+        name: 'BackendPage',
+        component: () => import('@/pages/BackendPage.vue'),
+    },
+    {
         path: '/chats',
         name: 'ChatSingleOverviewPage',
         component: () => import('@/pages/ChatSingleOverviewPage.vue'),
+        meta: {
+            requireAuth: true,
+        },
     },
     {
         path: '/chat',
         name: 'ChatSinglePage',
         component: () => import('@/pages/ChatSinglePage.vue'),
+        meta: {
+            requireAuth: true,
+        },
     },
     {
         path: '/chat-rooms',
         name: 'ChatRoomsPage',
         component: () => import('@/pages/ChatRoomsPage.vue'),
+        meta: {
+            requireAuth: true,
+        },
     },
     {
         path: '/user',
         name: 'UserDetailsPage',
         component: () => import('@/pages/UserDetailsPage.vue'),
+        meta: {
+            requireAuth: true,
+        },
     },
     {
         path: '/admin/users',
         name: 'AdminUsersPage',
         component: () => import('@/pages/admin/UsersPage.vue'),
+        meta: {
+            requireAuth: true,
+        },
+    },
+    {
+        path: '/profile',
+        name: 'ProfilePage',
+        component: () => import('@/pages/ProfilePage.vue'),
+        meta: {
+            requireAuth: true,
+        },
     },
 ];
 

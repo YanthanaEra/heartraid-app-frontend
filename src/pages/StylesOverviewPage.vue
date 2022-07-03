@@ -11,7 +11,7 @@
                         <h5>Headline H5</h5>
                         <h6>Headline H6</h6>
                         <p class="h1 font-neon uppercase">Headline .h1.font-neon.uppercase</p>
-                        <p class="h1 font-glitch">Headline .h1.font-glitc</p>
+                        <p class="h1 font-glitch">Headline .h1.font-glitch</p>
                         <p>
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur nostrum quas ratione
                             perferendis animi hic illo, vel, odio eos ipsa soluta eveniet pariatur saepe laudantium

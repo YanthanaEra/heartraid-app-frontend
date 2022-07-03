@@ -91,6 +91,7 @@ const actions = {
                 userId: userId,
             });
         }
+        console.log('autoSignIn ist durchgelaufen');
     },
     signOut(context) {
         localStorage.removeItem('token');

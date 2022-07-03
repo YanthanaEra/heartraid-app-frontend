@@ -16,18 +16,18 @@
                     title="Go to Profile"
                 >
                     <div
-                        v-if="newby.status"
-                        :title="newby.status"
+                        v-if="newby.userIsLoggedIn"
+                        :title="newby.userIsLoggedIn"
+                        :class="`userItem__status--${newby.userIsLoggedIn ? 'online' : 'offline'}`"
                         class="userItem__status"
-                        :class="`userItem__status--${newby.status}`"
                     ></div>
                     <div
                         class="userItem__avatar"
-                        :class="`userItem__avatar--${newby.status}`"
+                        :class="`userItem__avatar--${newby.userIsLoggedIn ? 'online' : 'offline'}`"
                     >
                         <img
-                            v-if="newby.image"
-                            :src="newby.image"
+                            v-if="newby.userAvatarPathSmall"
+                            :src="newby.userAvatarPathSmall"
                             :alt="newby.username"
                         />
                     </div>
@@ -41,7 +41,7 @@
                             />
                         </div>
                         <div class="userItem__date">
-                            {{ newby.registerTime }}
+                            {{ newby.registeredSince }}
                         </div>
                     </div>
                 </a>

@@ -45,5 +45,22 @@
     "dashboard": {
         "headline": "Dashboard",
         "text": "Eine Übersicht aller aktivitäten."
+    },
+    "chatRooms": {
+        "GO_TO_ROOM": "Jetzt mit chatten",
+        "ANIME_TITLE": "Anime",
+        "ANIME_DESCRIPTION": "Triff dich mit anderen Anime Fans und quatsch mit ihnen über deine lieblings Animes. Vielleicht hast du ja ein paar Tipps was man aktuell so gucken kann.",
+        "BOOKS_TITLE": "Bücher",
+        "BOOKS_DESCRIPTION": "Bücher",
+        "COSPLAY_TITLE": "Cosplay",
+        "COSPLAY_DESCRIPTION": "Cosplay",
+        "GAMING_TITLE": "Gaming",
+        "GAMING_DESCRIPTION": "Gaming",
+        "FITNESS_TITLE": "Fitness",
+        "FITNESS_DESCRIPTION": "Fitness",
+        "PHOTOGRAPHY_TITLE": "Fotografie",
+        "PHOTOGRAPHY_DESCRIPTION": "Fotografie",
+        "VEGAN_TITLE": "Vegan",
+        "VEGAN_DESCRIPTION": "Vegan"
     }
 }
