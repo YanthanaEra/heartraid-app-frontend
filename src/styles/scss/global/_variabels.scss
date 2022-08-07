@@ -43,9 +43,12 @@ $turquoise: #00ffee;
 $turquoise-light: lighten($turquoise, 40%);
 $turquoise-dark: darken($turquoise, 42%);
 
-/*  Typography
+/*  Page
 ------------------------------------------------------------- */
 $page-background: #000f18;
+$window-height: 100vh;
+$page-header-height: 110px;
+$window-width: 100vw;
 
 /*  Typography
 ------------------------------------------------------------- */
