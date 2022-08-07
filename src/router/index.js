@@ -70,7 +70,15 @@ const routes = [
     {
         path: '/chat-rooms',
         name: 'ChatRoomsPage',
-        component: () => import('@/pages/ChatRoomsPage.vue'),
+        component: () => import('@/pages/chatRooms/_overviewPage.vue'),
+        meta: {
+            requireAuth: true,
+        },
+    },
+    {
+        path: '/chat-rooms/anime',
+        name: 'ChatRoomAnimePage',
+        component: () => import('@/pages/chatRooms/roomAnimePage.vue'),
         meta: {
             requireAuth: true,
         },

@@ -1,5 +1,8 @@
 <template>
-    <header class="page__header">
+    <header
+        id="pageHeader"
+        class="page__header"
+    >
         <div class="page__headerContent">
             <nav class="nav nav--main">
                 <ul class="nav__bar">
@@ -22,7 +25,7 @@
                         <select
                             class="langSwitcher"
                             v-model="lang"
-                            @change="handleChange($event)"
+                            @change="setAppLanguage($event)"
                         >
                             <option value="en">English</option>
                             <option value="de">Deutsch</option>
@@ -56,15 +59,17 @@ export default defineComponent({
     components: {
         LogoSvg,
     },
-    props: {},
+    props: {
+        height: { type: Number, default: 0 },
+        appLanguage: { type: String, default: 'en' },
+    },
     data: function () {
-        const lang = localStorage.getItem('lang') || 'en';
         return {
-            lang: lang,
+            lang: this.appLanguage,
         };
     },
     methods: {
-        handleChange(event) {
+        setAppLanguage(event) {
             localStorage.setItem('lang', event.target.value);
             window.location.reload();
         },

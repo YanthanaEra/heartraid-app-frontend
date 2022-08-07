@@ -76,11 +76,9 @@
     }
 }
 .grid__item--filter {
-    background-color: rgba(0, 187, 255, 0.177);
     flex-direction: column;
 }
 .grid__item--rooms {
-    background-color: rgba(217, 255, 0, 0.177);
     flex-direction: column;
 }
 
@@ -97,7 +95,6 @@
 }
 .chatRooms__listItem {
     color: #333;
-    background-color: rgba(255, 0, 0, 0.177);
 }
 .chatRoom__cardLink {
     display: flex;
@@ -159,7 +156,6 @@
     }
 }
 .chatRoom__contentLeft {
-    background-color: rgba(0, 0, 0, 0.113);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -176,7 +172,6 @@
     font-weight: bold;
 }
 .chatRoom__content {
-    background-color: rgba(255, 0, 0, 0.177);
     flex-grow: 1;
     gap: 1rem;
     color: $gray-dark;

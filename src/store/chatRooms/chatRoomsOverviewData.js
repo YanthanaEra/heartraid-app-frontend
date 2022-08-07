@@ -8,7 +8,7 @@ export const chatRoomsOverviewData = {
             category: 'nerd',
             tags: ['anime', 'manga', 'japan', 'comic', 'nerd', 'fantasy'],
             roomAvatarPath: 'path/image.webp',
-            roomPath: '/chatrooms/anime',
+            roomPath: '/chat-rooms/anime',
             currentVisitors: 2,
         },
         {

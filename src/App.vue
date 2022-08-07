@@ -1,5 +1,11 @@
 <template>
-    <PageHeader />
+    <p>App Data: {{ appWidth }}, {{ appHeight }}, {{ appHeaderHeight }}, {{ appLanguage }}</p>
+    <PageHeader
+        ref="pageHeader"
+        v-model="appHeaderHeight"
+        :height="appHeaderHeight"
+        :appLanguage="appLanguage"
+    />
     <router-view />
 </template>
 
@@ -13,7 +19,13 @@ export default defineComponent({
         PageHeader,
     },
     data() {
-        return {};
+        const appLanguageConst = localStorage.getItem('lang') || 'en';
+        return {
+            appHeight: document.documentElement.clientHeight,
+            appWidth: document.documentElement.clientWidth,
+            appHeaderHeight: 0,
+            appLanguage: appLanguageConst,
+        };
     },
     created() {
         this.$store.dispatch('autoSignIn');
@@ -31,6 +43,29 @@ export default defineComponent({
                 }
             }
         },
+    },
+    computed: {
+        dateToday() {
+            return new Date().toISOString().slice(0, 10);
+        },
+    },
+    methods: {
+        setNewPageHeaderHeight() {
+            const getPageHeaderHeight = this.$refs.pageHeader.$el.clientHeight;
+            this.appHeaderHeight = getPageHeaderHeight;
+        },
+        getAppDimensions() {
+            this.appWidth = document.documentElement.clientWidth;
+            this.appHeight = document.documentElement.clientHeight;
+            this.setNewPageHeaderHeight();
+        },
+    },
+    mounted() {
+        window.addEventListener('resize', this.getAppDimensions);
+        this.setNewPageHeaderHeight();
+    },
+    unmounted() {
+        window.removeEventListener('resize', this.getAppDimensions);
     },
 });
 </script>
